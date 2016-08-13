@@ -64,8 +64,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Game.cs" />
+    <Compile Include="Assets\Scripts\Help.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\Map.cs" />
+    <Compile Include="Assets\Scripts\SceneStack.cs" />
     <Compile Include="Assets\Scripts\StageSelection.cs" />
     <Compile Include="Assets\Scripts\player.cs" />
   </ItemGroup>

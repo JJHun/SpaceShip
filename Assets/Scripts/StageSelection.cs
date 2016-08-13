@@ -61,9 +61,9 @@ public class StageSelection : MonoBehaviour {
             }
         }
 
-        if (GUI.Button(new Rect(Screen.width / 2 + 150, 400, 100, 100), nextGameScene[0]))
+        if (GUI.Button(new Rect(Screen.width / 4 * 3, 30, 100, 50), "back"))
         {
-            gameStage = 0;
+            SceneManager.LoadScene(SceneStack.prevScene);
         }
     }
 }
