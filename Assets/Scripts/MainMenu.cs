@@ -4,13 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
-    private int helpEvent = 0;
-    private string helpMessage;
-
     // Use this for initialization
     void Start()
     {
-        helpEvent = 0;
+       
     }
     // Update is called once per frame
     void Update()
@@ -46,8 +43,7 @@ public class MainMenu : MonoBehaviour {
 
     public void OnHelpButtonClicked()
     {
-        helpEvent = 1;
-        helpMessage = "";
+        SceneManager.LoadScene("Help");
     }
 
     void OnGUI()
