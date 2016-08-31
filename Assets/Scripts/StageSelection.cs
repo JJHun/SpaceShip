@@ -36,11 +36,15 @@ public class StageSelection : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        if( gameStage != -1)
+        if (gameStage == 0)
+        {
+            SceneManager.LoadScene(MainMenu);
+        }
+        else if( gameStage > 0)
         {
             // Application.LoadLevel(nextGameScene[gameStage]);
-           SceneManager.LoadScene(nextGameScene[gameStage]);
-           // SceneManager.LoadScene("Assemble");
+           SceneManager.LoadScene("Assemble");
+     
         }
         
 	}
@@ -54,8 +58,8 @@ public class StageSelection : MonoBehaviour {
                 if (GUI.Button(new Rect((Screen.width / 6) + (j*110), (Screen.height / 3) +(i*110), 100, 100), nextGameScene[i * 4 + j + 1]))
                 {
                     gameStage = i * 4 + j + 1;
-                    //PlayerPrefs.SetString("Stage", nextGameScene[gameStage]);
-                    //PlayerPrefs.Save();
+                    SceneStack.SetNextScene(nextGameScene[gameStage]);
+                    SceneStack.SetPrevScene("StageSelection");
                 }
 
             }

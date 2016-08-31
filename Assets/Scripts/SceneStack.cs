@@ -13,23 +13,23 @@ public class SceneStack : MonoBehaviour {
         SceneManager.LoadScene("MainMenu");
     }
 
-    void SetPrevScene(string pScene)
+    public static void SetPrevScene(string pScene)
     {
         prevScene = pScene;
     }
 
-    void SetNextScene(string nScene)
+    public static void SetNextScene(string nScene)
     {
         nextScene = nScene;
     
     }
     
-    string GetPrevScene()
+    public static string GetPrevScene()
     {
         return prevScene;
     }
 
-    string GetNextScene()
+    public static string GetNextScene()
     {
         return nextScene;
     }
