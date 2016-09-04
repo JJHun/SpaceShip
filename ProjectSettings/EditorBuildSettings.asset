@@ -13,7 +13,7 @@ EditorBuildSettings:
     path: Assets/Scenes/StageSelection.unity
   - enabled: 1
     path: Assets/Scenes/Ranking.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Store.unity
   - enabled: 1
     path: Assets/Scenes/Setting.unity

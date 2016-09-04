@@ -43,20 +43,15 @@ public class Help : MonoBehaviour {
             delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
                 { return true; };
         smtpServer.Send(mail);
-        Debug.Log("success");
-        
+
+        SoundManager.ButtonSound();
         SceneManager.LoadScene("MainMenu");
     }
 
     public void onBackButtonClicked()
     {
-        Debug.Log("abc");
+        SoundManager.MenuSound();
         SceneManager.LoadScene("MainMenu");
-    }
-
-    void OnGUI()
-    {
-
     }
 
 }

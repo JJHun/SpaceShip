@@ -1,73 +1,92 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class StageSelection : MonoBehaviour {
 
-    private int gameStage; // 미선택
-    private string[] nextGameScene;
+    public string map1;
+    public string map2;
+    public string map3;
+    public string map4;
+    public string map5;
 
-    public int NumOfGameScene;
-    public string GameScene1;
-    public string GameScene2;
-    public string GameScene3;
-    public string GameScene4;
-    public string GameScene5;
+    string selectedmap = "";
 
-    public string MainMenu;
-    
+    public Text text;
+    public static Text textContent;
 
-    // Use this for initialization
-    void Start () {
-        gameStage = -1;
-        nextGameScene = new string[NumOfGameScene+1];
-
-        nextGameScene[1] = GameScene1;
-        nextGameScene[2] = GameScene2;
-        nextGameScene[3] = GameScene3;
-        nextGameScene[4] = GameScene4;
-        nextGameScene[5] = GameScene5;
-
-        nextGameScene[0] = MainMenu;
-
-
+    void Start()
+    {
+        textContent = text;
     }
 
-    // Update is called once per frame
-    void Update () {
 
-        if (gameStage == 0)
-        {
-            SceneManager.LoadScene(MainMenu);
-        }
-        else if( gameStage > 0)
-        {
-            // Application.LoadLevel(nextGameScene[gameStage]);
-           SceneManager.LoadScene("Assemble");
-     
-        }
-        
-	}
-
-    void OnGUI()
+    void Update()
     {
-        for (int i = 0; i <= (NumOfGameScene - 1) / 4; i++)
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            for (int j = 0; j < 4 && (i * 4 + j) < NumOfGameScene; j++)
-            {
-                if (GUI.Button(new Rect((Screen.width / 6) + (j*110), (Screen.height / 3) +(i*110), 100, 100), nextGameScene[i * 4 + j + 1]))
-                {
-                    gameStage = i * 4 + j + 1;
-                    SceneStack.SetNextScene(nextGameScene[gameStage]);
-                    SceneStack.SetPrevScene("StageSelection");
-                }
-
-            }
+            Back();
         }
 
-        if (GUI.Button(new Rect(Screen.width / 4 * 3, 30, 100, 50), "back"))
+        DispInform();
+    }
+
+    public void Map1()
+    {
+        SoundManager.ButtonSound();
+        selectedmap = map1;
+    }
+    public void Map2()
+    {
+        SoundManager.ButtonSound();
+        selectedmap = map2;
+    }
+    public void Map3()
+    {
+        SoundManager.ButtonSound();
+        selectedmap = map3;
+    }
+    public void Map4()
+    {
+        SoundManager.ButtonSound();
+        selectedmap = map4;
+    }
+    public void Map5()
+    {
+        SoundManager.ButtonSound();
+        selectedmap = map5;
+       
+    }
+
+    public void Back()
+    {
+        SoundManager.MenuSound();
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Next()
+    {
+        if (selectedmap != "")
         {
-            SceneManager.LoadScene(SceneStack.prevScene);
+            SoundManager.MenuSound();
+            SceneStack.SetNextScene(selectedmap);
+            SceneStack.SetPrevScene("StageSelection");
+            SceneManager.LoadScene("Assemble");
         }
+    }
+
+    void DispInform()
+    {
+        if (selectedmap == map1)
+            textContent.text = "1번맵";
+        else if (selectedmap == map2)
+            textContent.text = "2번맵";
+        else if (selectedmap == map3)
+            textContent.text = "3번맵";
+        else if (selectedmap == map4)
+            textContent.text = "4번맵";
+        else if (selectedmap == map5)
+            textContent.text = "5번맵";
     }
 }
